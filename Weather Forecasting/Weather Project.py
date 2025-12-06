@@ -9,7 +9,7 @@ import requests
 def get_city_from_ip():
     """Get your city name using your IP address."""
     try:
-        response = requests.get("https://ipinfo.io/", timeout=5)
+        response = requests.get("https://ipinfo.io/", timeout=50)
         data = response.json()
         return data.get("city")
     except:
@@ -20,7 +20,7 @@ def get_weather_short(city: str):
     """Get a one-line weather summary."""
     try:
         url = f"https://wttr.in/{city}?format=3"
-        response = requests.get(url, timeout=50)
+        response = requests.get(url, timeout=30)
         return response.text
     except Exception as e:
         return f"Error: {e}"
@@ -30,7 +30,7 @@ def get_weather_full(city: str):
     """Get the full ASCII weather report."""
     try:
         url = f"https://wttr.in/{city}"
-        response = requests.get(url, timeout=10)
+        response = requests.get(url, timeout=50)
         return response.text
     except Exception as e:
         return f"Error: {e}"
@@ -69,4 +69,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
